@@ -1,0 +1,142 @@
+/*
+ * CheckboxList styles
+ * Token-friendly: override the CSS variables to match Rally design tokens.
+ */
+
+.checkbox-list {
+  --cl-font-family: var(--typography-font-family-primary, Inter, system-ui, sans-serif);
+  --cl-label-color: var(--global-colors-color-neutral-9, #212121);
+  --cl-body-color: var(--typography-colors-default-body, #424242);
+  --cl-helper-color: var(--typography-colors-default-caption-footnotes, #5d5d5d);
+  --cl-error-color: var(--global-colors-color-utility-critical, #d32f2f);
+  --cl-border-color: var(--form-elements-stroke, #5d5d5d);
+  --cl-fill: var(--form-elements-input-fill, #fafafa);
+  --cl-radius: var(--form-elements-field-radius, 4px);
+  --cl-gap: var(--spacing-1, 8px);
+  --cl-gap-lg: var(--spacing-2, 16px);
+  --cl-control-size: 20px;
+
+  font-family: var(--cl-font-family);
+  border: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--cl-gap);
+}
+
+.checkbox-list__legend {
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--cl-label-color);
+  padding: 0;
+  margin-bottom: 4px;
+}
+
+.checkbox-list__required {
+  font-weight: 600;
+  color: var(--cl-error-color);
+}
+
+.checkbox-list__helper {
+  font-size: 16px;
+  color: var(--cl-helper-color);
+  margin: 0;
+  line-height: 1.4;
+}
+
+.checkbox-list__error {
+  display: flex;
+  align-items: flex-start;
+  gap: 4px;
+  font-size: 16px;
+  color: var(--cl-error-color);
+  margin: 0;
+  line-height: 1.4;
+}
+
+.checkbox-list__error-icon {
+  flex-shrink: 0;
+}
+
+.checkbox-list__options {
+  display: flex;
+  gap: var(--cl-gap-lg);
+}
+
+.checkbox-list__options--inline {
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.checkbox-list__options--stacked {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--cl-gap);
+}
+
+.checkbox-list__option {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: var(--cl-gap);
+  cursor: pointer;
+  font-size: 16px;
+  color: var(--cl-body-color);
+  line-height: 1.4;
+}
+
+.checkbox-list__option--disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.checkbox-list__input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  margin: 0;
+}
+
+.checkbox-list__control {
+  display: inline-block;
+  width: var(--cl-control-size);
+  height: var(--cl-control-size);
+  flex-shrink: 0;
+  margin-top: 2px;
+  border: 1px solid var(--cl-border-color);
+  border-radius: var(--cl-radius);
+  background: var(--cl-fill);
+  box-sizing: border-box;
+  position: relative;
+}
+
+.checkbox-list__input:checked + .checkbox-list__control {
+  background: var(--cl-border-color);
+  border-color: var(--cl-border-color);
+}
+
+.checkbox-list__input:checked + .checkbox-list__control::after {
+  content: '';
+  position: absolute;
+  left: 6px;
+  top: 2px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.checkbox-list__input:focus-visible + .checkbox-list__control {
+  outline: 2px solid #1976d2;
+  outline-offset: 2px;
+}
+
+.checkbox-list--error .checkbox-list__control {
+  border-color: var(--cl-error-color);
+}
+
+.checkbox-list__label-text {
+  user-select: none;
+}
